@@ -1,6 +1,71 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
+import styled from 'styled-components';
+
+
+const StyledOrderForm = styled.div`
+
+    .form-div {
+        width: 64%;
+        margin: 0 auto 0 auto; 
+    }
+
+    .form-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-header h2 {
+        color: #000000;
+    }
+
+    .text-field {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        margin-bottom: .3rem;
+        font-size: .8rem;
+    }
+
+    .build-pizza {
+        border: 2px solid green;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .toppings {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 90%;
+        height: 15rem; 
+    }
+
+    .topping {
+        margin: .5rem;
+        font-size: 1.2rem;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    .sub-button {
+        width: 15rem;
+        font-size: 1.3rem;
+    }
+
+`
+// END STYLES
+
+
+
+
 
 const formSchema = yup.object().shape({
     name: yup
@@ -81,7 +146,7 @@ function OrderForm() {
 
     const orderSubmit = (e) => {
         e.preventDefault();
-        console.log('form submitted');
+        console.log('form submitted!');
         axios
             .post('https://reqres.in/api/users', pizzaOrder)
             .then(response => {
@@ -92,14 +157,13 @@ function OrderForm() {
     };
 
     return (
-        <div className='form-container'>
-            <form onSubmit={orderSubmit}>
+        <StyledOrderForm className='form-container'>
+            <form onSubmit={orderSubmit} className='form-div'>
                 <div className='form-header'>
 
                     <h2>Order Your Custom Pizza</h2>
-                    <h3>Eater Info</h3>
 
-                    <label htmlFor='name'>
+                    <label htmlFor='name' className='text-field'>
                         Name
                         <input
                             type='text'
@@ -110,7 +174,7 @@ function OrderForm() {
                         />
                         {errorState.name.length > 0 ? <p className='error'>{errorState.name}</p> : null}
                     </label>
-                    <label htmlFor='email'>
+                    <label htmlFor='email' className='text-field'>
                         Email
                         <input
                             type='text'
@@ -123,14 +187,13 @@ function OrderForm() {
                     </label>
                 </div>
 
-                <div className='form-build pizza'>
+                <div className='build-pizza'>
 
-                    <h3>Customize</h3>
+                    <h2>Customize</h2>
 
                     <div className='pizza-size'>
                         <label htmlFor='pizzaSize'>
-                            Choose a Size
-                            {/*DROPDOWN*/}
+                            <h3>Choose a Size</h3>
                             <select
                                 name='pizzaSize'
                                 value={pizzaOrder.pizzaSize}
@@ -145,8 +208,10 @@ function OrderForm() {
                         </label>
 
                     </div>
+                    <h3 className='toppings-h3'>Toppings:</h3>
                     <div className='toppings'>
-                        <label htmlFor='grilledChicken'>
+                        <label
+                            htmlFor='grilledChicken' className='topping'>
                             <input
                                 type='checkbox'
                                 name='grilledChicken'
@@ -155,7 +220,7 @@ function OrderForm() {
                             />
                             Grilled Chicken
                         </label>
-                        <label htmlFor='Onions'>
+                        <label htmlFor='Onions' className='topping'>
                             <input
                                 type='checkbox'
                                 name='onions'
@@ -165,7 +230,7 @@ function OrderForm() {
                             Onions
                         </label>
 
-                        <label htmlFor='greenPepper'>
+                        <label htmlFor='greenPepper' className='topping'>
                             <input
                                 type='checkbox'
                                 name='greenPepper'
@@ -175,7 +240,7 @@ function OrderForm() {
                             Green Pepper
                         </label>
 
-                        <label htmlFor='blackOlives'>
+                        <label htmlFor='blackOlives' className='topping'>
                             <input
                                 type='checkbox'
                                 name='blackOlives'
@@ -185,7 +250,7 @@ function OrderForm() {
                             Black Olives
                         </label>
 
-                        <label htmlFor='roastedGarlic'>
+                        <label htmlFor='roastedGarlic' className='topping'>
                             <input
                                 type='checkbox'
                                 name='roastedGarlic'
@@ -195,7 +260,7 @@ function OrderForm() {
                             Roasted Garlic
                         </label>
 
-                        <label htmlFor='dicedTomatos'>
+                        <label htmlFor='dicedTomatos' className='topping'>
                             <input
                                 type='checkbox'
                                 name='dicedTomatos'
@@ -205,7 +270,7 @@ function OrderForm() {
                             Diced Tomatos
                         </label>
 
-                        <label htmlFor='artichokeHearts'>
+                        <label htmlFor='artichokeHearts' className='topping'>
                             <input
                                 type='checkbox'
                                 name='artichokeHearts'
@@ -215,7 +280,7 @@ function OrderForm() {
                             Artichoke Hearts
                         </label>
 
-                        <label htmlFor='threeCheese'>
+                        <label htmlFor='threeCheese' className='topping'>
                             <input
                                 type='checkbox'
                                 name='threeCheese'
@@ -225,7 +290,7 @@ function OrderForm() {
                             Three Cheese
                         </label>
 
-                        <label htmlFor='pineapple'>
+                        <label htmlFor='pineapple' className='topping'>
                             <input
                                 type='checkbox'
                                 name='pineapple'
@@ -235,7 +300,7 @@ function OrderForm() {
                             Pineapple
                         </label>
 
-                        <label htmlFor='extraCheese'>
+                        <label htmlFor='extraCheese' className='topping'>
                             <input
                                 type='checkbox'
                                 name='extraCheese'
@@ -244,31 +309,26 @@ function OrderForm() {
                             />
                             Extra Cheese
                         </label>
-
-
                     </div>
                     <div className='special-instructions'>
+                        <h3>Special Instructions</h3>
                         <label htmlFor='specialInstructions'>
-
                             <textarea
                                 name='specialInstructions'
                                 placeholder='Please type any special instructions.'
                                 value={pizzaOrder.specialInstructions}
                                 onChange={changeHandler}
-
                             />
-
-
                         </label>
                     </div>
                     <div className='submit-button'>
                         <h3>Place Your Order</h3>
-                        <button type='submit'>Bake the Pizza</button>
+                        <button type='submit' className='sub-button'>Bake za Pizza</button>
                     </div>
                 </div>
             </form>
 
-        </div>
+        </StyledOrderForm>
     );
 }
 

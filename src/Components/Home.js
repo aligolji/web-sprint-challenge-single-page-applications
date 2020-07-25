@@ -1,12 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const styledHome = styled.div`
+
+
+`
+
 
 const Home = () => {
     return (
-        <div className='home-container'>
+        <styledHome className='home-container'>
             {/* <div className='linkToForm'>
                 <button type='link'>Order Pizza</button>
             </div> */}
-        </div>
+        </styledHome>
     );
 };
 

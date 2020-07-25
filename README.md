@@ -31,8 +31,15 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+        ↗   The 'useRouteMatch' allows an application to utilize nested routes which will allow one parameter in the URL to be changed without the full URL requiring change, and without breaking the code.
+
 1. How would you explain form validation to someone who has never programmed before?
+
+        ↗   Form validation is a check for quality of the data that is input into a form before submission. Once validation is set up, it will make sure input fields are filled according to set requirements and parameters, such as a checkbox requirement to be checked, or a text field requiring a minimum number of characters. Usually errors will be rendered if requirements are not met and validation fails.
+
 1. In 1-2 sentences, define end to end testing.
+
+        ↗   End-to-end testing will simulate the interaction of a user with the web application to test for bugs, features which are not functioning as expected. This is useful for creating a more seamless and enjoyable user experience.
 
 ## Instructions
 
@@ -56,16 +63,16 @@ Your finished project must include all of the following requirements:
 - [✔] A dropdown for pizza size
 - [✔] A checklist for toppings - at least 4 (hint: name each separately!)
 - [✔] Text input for special instructions
-- [❌] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [✔] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
             ❌=> only returns last item filled out on the form ❌
 
 #### Testing MVP
 
 Implement the following tests in Cypress:
 
-- [ ] test that you can add text to the box
-- [ ] test that you can select multiple toppings
-- [ ] test that you can submit the form
+- [✔] test that you can add text to the box
+- [ ] test that you can select multiple toppings ❌couldn't get it to work
+- [✔] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 

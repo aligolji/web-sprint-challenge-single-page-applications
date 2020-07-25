@@ -2,16 +2,17 @@ import React from "react";
 import Home from './Home'
 import OrderForm from './OrderForm';
 import { Route, Link } from 'react-router-dom';
+import './App.css';
+
 
 const App = () => {
   return (
     <div className='App'>
       <nav className='home-header'>
-        <h1>Lambda Eats</h1>
-        <p>You can remove this code and create your own header</p>
+        <h1>EAT ZA PIZZA</h1>
         <div className='nav-links'>
-          <Link to='/'>Home</Link>
-          <Link to='/pizza'>Order</Link>
+          <Link className='link' to='/'>Home</Link>
+          <Link className='link' to='/pizza'>Order</Link>
         </div>
       </nav>
       <img
@@ -23,7 +24,7 @@ const App = () => {
       <Route path='/pizza' component={OrderForm} />
 
 
-    </div >
+    </div>
   );
 };
 export default App;
